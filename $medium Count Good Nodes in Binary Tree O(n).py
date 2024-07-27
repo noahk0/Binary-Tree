@@ -1,8 +1,6 @@
 def goodNodes(self, root: TreeNode) -> int:
     def dfs(node, great):
-        nonlocal count
-
-        count += great <= node.val
+        count[0] += great <= node.val
         great = max(great, node.val)
 
         if node.left:
@@ -11,8 +9,8 @@ def goodNodes(self, root: TreeNode) -> int:
         if node.right:
             dfs(node.right, great)
 
-    count = 0
+    count = [0]
 
     dfs(root, root.val)
 
-    return count
+    return count[0]
