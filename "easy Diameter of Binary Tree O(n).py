@@ -1,14 +1,15 @@
 def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    self.diameter = 0
+    
     def dfs(root):
         if not root:
             return 0
 
         l, r = dfs(root.left), dfs(root.right)
-        diameter[0] = max(diameter[0], l + r)
+        self.diameter = max(self.diameter, l + r)
 
         return max(l, r) + 1
 
-    diameter = [0]
     dfs(root)
 
-    return diameter[0]
+    return self.diameter
