@@ -22,10 +22,12 @@ class Codec:
         def dfs():
             val = next(data)
 
-            if val != '!':
-                root = TreeNode(val)
-                root.left, root.right = dfs(), dfs()
+            if val == '!':
+                return
+                
+            root = TreeNode(val)
+            root.left, root.right = dfs(), dfs()
 
-                return root
+            return root
 
         return dfs()
